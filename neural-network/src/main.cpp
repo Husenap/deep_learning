@@ -6,7 +6,7 @@
 #include <chrono>
 
 int main() {
-	dl::NeuralNetwork nn(4, 2);
+	dl::NeuralNetwork nn(4, 1);
 
 	// clang-format off
 	arma::fmat trainingInputData = {
