@@ -1,0 +1,80 @@
+#include <iostream>
+#include <armadillo>
+
+#include "NeuralNetwork.h"
+
+#include <chrono>
+
+int main() {
+	dl::NeuralNetwork nn(4, 2);
+
+	// clang-format off
+	arma::fmat trainingInputData = {
+		{0, 0, 0, 0},
+		//{0, 0, 0, 1},
+		{0, 0, 1, 0},
+		{0, 1, 0, 0},
+
+		{1, 0, 0, 0},
+		{0, 0, 1, 1},
+		{0, 1, 0, 1},
+		//{1, 0, 0, 1},
+
+		//{1, 0, 1, 0},
+		{1, 1, 0, 0},
+		{1, 1, 0, 1},
+		//{0, 1, 1, 1},
+
+		{1, 0, 1, 1},
+		{1, 1, 0, 1},
+		{1, 1, 1, 0},
+		//{1, 1, 1, 1},
+	};
+	arma::fmat trainingOutputData = arma::fmat({{
+		{0, 0},
+		//{0, 0},
+		{0, 0},
+		{0, 1},
+
+		{1, 0},
+		{0, 0},
+		{0, 1},
+		//{1, 0},
+
+		//{1, 0},
+		{1, 1},
+		{1, 1},
+		//{0, 1},
+
+		{1, 0},
+		{1, 1},
+		{1, 1},
+		//{1, 1},
+	}});
+	arma::fmat testInputData = {
+		{0, 1, 1, 1},
+		{1, 0, 1, 0},
+		{1, 0, 0, 1},
+		{1, 1, 1, 1},
+		{0, 0, 0, 1}
+	};
+	// clang-format on
+
+	std::cout << "Evaluating test data before training" << std::endl << testInputData << std::endl;
+	std::cout << nn.Evaluate(testInputData) << std::endl;
+
+	auto timestampBefore = std::chrono::high_resolution_clock::now();
+
+	for (int i = 0; i < 10000; ++i) {
+		nn.Train(trainingInputData, trainingOutputData);
+	}
+
+	auto timestampAfter = std::chrono::high_resolution_clock::now();
+	long long timeInMS = std::chrono::duration_cast<std::chrono::milliseconds>(timestampAfter - timestampBefore).count();
+	std::cout << "Trained for " << timeInMS << "ms" << std::endl << std::endl;
+
+	std::cout << "Evaluating test data after training" << std::endl << testInputData << std::endl;
+	std::cout << arma::round(nn.Evaluate(testInputData)*1000.f)/1000.f << std::endl;
+
+	return 0;
+}
