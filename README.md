@@ -3,8 +3,12 @@
 I started working on this project because I want to **Learn** more about Machine **Learn**ing 😉
 
 
+## Handwritten digits
+
+Here are some handwritten digits taken from the MNIST database. There are 60000 digits for training and 10000 digits for testing.
+I'm going to use these to write a neural network that uses hidden layers and backpropagation.
+
 ```
-                            ..--;;
                         ;;--##@@@@@@**
                 ;;;;;;%%@@@@@@@@@@@@%%--
             **##@@@@@@@@@@@@@@@@@@@@@@**
