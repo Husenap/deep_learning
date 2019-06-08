@@ -6,14 +6,14 @@ I started working on this project because I want to **Learn** more about Machine
 
 The goal of this test is to give the NN 4 numbers, and train it to return the first 2 numbers just to make sure the NN and math works. 
 
-```
-Evaluating test data before training
+```c
+Evaluating test data before training:
  Input:   1.0000        0   1.0000        0
 Output:  -0.5628   1.0667
 
 Training...
 
-Evaluating test data after training
+Evaluating test data after training:
  Input:   1.0000        0   1.0000        0
 Output:   1.0000        0
 ```
