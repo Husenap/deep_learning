@@ -10,7 +10,7 @@ namespace dl {
 
 IDXLoader::IDXLoader(const char* filepath) {
 	mFilepath = filepath;
-	std::ifstream file(filepath);
+	std::ifstream file(filepath, std::ios_base::binary);
 
 	if (file.fail()) {
 		throw std::runtime_error("Failed to read file");

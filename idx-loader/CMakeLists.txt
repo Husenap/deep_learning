@@ -2,10 +2,9 @@ set(target_name "idx-loader")
 
 set(src_files
     "src/IDXLoader.cpp"
-    "src/IDXLoader.h"
-    "src/main.cpp")
+    "src/IDXLoader.h")
 
-add_executable(${target_name} ${src_files})
+add_library(${target_name} ${src_files})
 
 source_group("src" FILES ${src_files})
 

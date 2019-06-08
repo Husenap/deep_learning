@@ -1,4 +1,4 @@
-﻿#include <algorithm>
+#include <algorithm>
 #include <armadillo>
 #include <cmath>
 #include <iostream>
@@ -27,19 +27,22 @@ int main() {
 	dl::IDXLoader labelsFile("data/labels.idx1-ubyte");
 	labelsFile.PrintInfo();
 
-	for (int i = 8020; i < 8040; ++i) {
+	for (int i = 0; i < numImages; ++i) {
 		
-		printf("%d:\n", labelsFile.Data()[i]);
+		printf("[%d] %d:\n", i, labelsFile.Data()[i]);
 
 		for (int row = 0; row < imagesFile.Dimensions()[1]; ++row) {
 			for (int col = 0; col < imagesFile.Dimensions()[2]; ++col) {
 				int pixel = row * imagesFile.Dimensions()[2] + col;
 
-				float f = testData(i, pixel);
-				unsigned char a = (unsigned char)(f*255.f);
+				float f = testData(i, pixel) * 255.f;
+				size_t a = (unsigned char)(f) / (255 / ramp.size());
 
-				size_t gray = std::min(a / (255 / ramp.size()), ramp.size() - 1);
-				printf("%c%c", ramp[gray], ramp[gray]);
+				if (a >= ramp.size()) {
+					a = ramp.size() - 1;
+				}
+
+				printf("%c%c", ramp[a], ramp[a]);
 			}
 			printf("\n");
 		}
