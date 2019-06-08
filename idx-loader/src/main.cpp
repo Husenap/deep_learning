@@ -24,11 +24,10 @@ int main() {
 	arma::fmat testData(data.data(), numPixels, numImages);
 	arma::inplace_trans(testData);
 
-	/*
 	dl::IDXLoader labelsFile("data/labels.idx1-ubyte");
 	labelsFile.PrintInfo();
 
-	for (int i = 8000; i < 8020; ++i) {
+	for (int i = 8020; i < 8040; ++i) {
 		
 		printf("%d:\n", labelsFile.Data()[i]);
 
@@ -46,7 +45,6 @@ int main() {
 		}
 
 	}
-	*/
 
 	/*
 	int singleImageSize = imagesFile.Dimensions()[1] * imagesFile.Dimensions()[2];
