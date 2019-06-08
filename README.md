@@ -1,3 +1,3 @@
 # Deep Learning
 
-I'm working on this project because want to Learn more about Machine Learning
+I started working on this project because I want to **Learn** more about Machine **Learn**ing 😉
