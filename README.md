@@ -2,6 +2,7 @@
 
 I started working on this project because I want to **Learn** more about Machine **Learn**ing 😉
 
+
 ## Simple Test
 
 The goal of this test is to give the NN 4 numbers, and train it to return the first 2 numbers just to make sure the NN and math works. 
