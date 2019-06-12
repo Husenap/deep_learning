@@ -3,9 +3,7 @@ link_libraries(
     "idx-loader"
     "compiler-warnings")
 
-include_directories(
-    ${armadillo_includes}
-    "../idx-loader/src")
+include_directories(${armadillo_includes})
 
 add_executable(print_MNIST_digits print_MNIST_digits.cpp)
 

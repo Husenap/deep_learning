@@ -3,12 +3,12 @@
 #include <cmath>
 #include <iostream>
 
-#include "IDXLoader.h"
+#include <IDXLoader.h>
 
 int main() {
 	const std::string ramp = " .;-*+=%#@";
 
-	dl::IDXLoader imagesFile("data/images.idx3-ubyte");
+	dl::IDXLoader imagesFile("data/train-images.idx3-ubyte");
 	imagesFile.PrintInfo();
 
 	int numImages = imagesFile.Dimensions()[0];
@@ -24,7 +24,7 @@ int main() {
 	arma::fmat testData(data.data(), numPixels, numImages);
 	arma::inplace_trans(testData);
 
-	dl::IDXLoader labelsFile("data/labels.idx1-ubyte");
+	dl::IDXLoader labelsFile("data/train-labels.idx1-ubyte");
 	labelsFile.PrintInfo();
 
 	for (int i = 0; i < numImages; ++i) {

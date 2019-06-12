@@ -1,9 +1,9 @@
-#include <iostream>
 #include <armadillo>
-
-#include "NeuralNetwork.h"
-
 #include <chrono>
+#include <iostream>
+
+#include <IDXLoader.h>
+#include "NeuralNetwork.h"
 
 int main() {
 	dl::NeuralNetwork nn(4, 2);
@@ -62,21 +62,22 @@ int main() {
 
 	std::cout << "Evaluating test data before training" << std::endl << testInputData << std::endl;
 	std::cout << nn.Evaluate(testInputData) << std::endl;
-	std::cout << "Weights:" << std::endl << arma::round(nn.GetWeights()*1000.f)/1000.f << std::endl;
+	std::cout << "Weights:" << std::endl << arma::round(nn.GetWeights() * 1000.f) / 1000.f << std::endl;
 
 	auto timestampBefore = std::chrono::high_resolution_clock::now();
 
-	for (int i = 0; i < 100; ++i) {
+	for (int i = 0; i < 1000; ++i) {
 		nn.Train(trainingInputData, trainingOutputData);
 	}
 
 	auto timestampAfter = std::chrono::high_resolution_clock::now();
-	long long timeInMS = std::chrono::duration_cast<std::chrono::milliseconds>(timestampAfter - timestampBefore).count();
+	long long timeInMS =
+		std::chrono::duration_cast<std::chrono::milliseconds>(timestampAfter - timestampBefore).count();
 	std::cout << "Trained for " << timeInMS << "ms" << std::endl << std::endl;
 
 	std::cout << "Evaluating test data after training" << std::endl << testInputData << std::endl;
-	std::cout << arma::round(nn.Evaluate(testInputData)*1000.f)/1000.f << std::endl;
-	std::cout << "Weights:" << std::endl << arma::round(nn.GetWeights()*1000.f)/1000.f << std::endl;
+	std::cout << arma::round(nn.Evaluate(testInputData) * 1000.f) / 1000.f << std::endl;
+	std::cout << "Weights:" << std::endl << arma::round(nn.GetWeights() * 1000.f) / 1000.f << std::endl;
 
 	return 0;
 }

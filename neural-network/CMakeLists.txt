@@ -10,6 +10,7 @@ add_executable(${target_name} ${src_files})
 source_group("src" FILES ${src_files})
 
 target_link_libraries(${target_name} PUBLIC ${armadillo_libraries})
+target_link_libraries(${target_name} PUBLIC "idx-loader")
 target_link_libraries(${target_name} PUBLIC "compiler-warnings")
 target_include_directories(${target_name} PUBLIC ${armadillo_includes})
 
