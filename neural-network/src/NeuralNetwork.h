@@ -12,6 +12,10 @@ public:
 	void Train(const arma::fmat& inputData, const arma::fmat& outputData);
 	arma::fmat Evaluate(const arma::fmat& inputData);
 
+	const arma::fmat& GetWeights() const {
+		return mWeights;
+	}
+
 private:
 	arma::fmat Sigmoid(arma::fmat x);
 	arma::fmat SigmoidDerivative(arma::fmat x);
